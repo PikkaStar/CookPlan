@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
-  <%= link_to "TOP",root_path,class: "mt-5" %>
-  <%= link_to "ログアウト",destroy_user_session_path(current_user),method: :delete %>
+  <%= current_user.name %>
+  <%= link_to "編集",edit_user_path(current_user),class: "btn btn-secondary" %>
+  <%= link_to "TOP",root_path,class: "mt-5 bg-dark",style: "font-size: 25px;" %>
+  <%= link_to "ログアウト",destroy_user_session_path,method: :delete,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
 <% else %>
-  <%= link_to "新規登録",new_user_registration_path %>
-  <%= link_to "ログイン",new_user_session_path %>
+  <%= link_to "新規登録",new_user_registration_path,class: "mt-5 bg-dark",style: "font-size: 25px;" %>
+  <%= link_to "ログイン",new_user_session_path,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
 <% end %>
