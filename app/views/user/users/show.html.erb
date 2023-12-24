@@ -1,9 +1,13 @@
+<div class="flash-notice text-center">
+  <%= flash[:notice] %>
+</div>
+
 <div class="container">
   <div class="row">
     <% unless @user == current_user %>
      <div style="width: 50px; height: 50px;">
         <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
-      </div>
+     </div>
     <% end %>
     <div class="col-md-8 mx-auto">
       <h4 class="text-center title"><%= @user.name %>さんのキッチン</h4>

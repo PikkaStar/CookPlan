@@ -21,5 +21,26 @@ footer {
 
 .submit {
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 
+.container-fluid {
+  padding: 0px;
+}
+
+.col-md-2 {
+    position: fixed;
+    height: 100%; /* ウィンドウの高さに合わせる */
+    top: 0;
+    left: 0;
+    background-color: #ebe1a9;
+    z-index: 1000; /* サイドバーが他の要素の上に表示されるようにする */
+    padding: 20px;
+    width: 250px;
+  }
+
+  .col-md-10 {
+    background-color: #f8f4e6;
+    margin-left: 250px;
+    width: 100%;
+  }
