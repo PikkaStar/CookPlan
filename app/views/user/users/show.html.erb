@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
+    <% unless @user == current_user %>
+     <div style="width: 50px; height: 50px;">
+        <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+      </div>
+    <% end %>
     <div class="col-md-8 mx-auto">
-      <h4 class="text-center mt-3 mb-5"><%= @user.name %>さんのキッチン</h4>
+      <h4 class="text-center title"><%= @user.name %>さんのキッチン</h4>
 
       <div class="tabs">
         <ul class="nav nav-tabs d-flex justify-content-between">
@@ -14,6 +19,11 @@
           <li class="nav-item">
             <%= link_to "お気に入り","#section3", class: "nav-link", data: { toggle: "tab" } %>
           </li>
+          <% if @user == current_user %>
+          <li class="nav-item">
+            <%= link_to "ユーザー設定","#section4",class: "nav-link", data: { toggle: "tab" } %>
+          </li>
+          <% end %>
         </ul>
         <div class="tab-content">
           <div id="section1" class="tab-pane fade show active">
@@ -24,6 +34,9 @@
           </div>
           <div id="section3" class="tab-pane fade">
             <%= render "user/users/report" %>
+          </div>
+          <div id="section4" class="tab-pane fade">
+            <%= link_to "プロフィール変更",edit_user_path(current_user) %>
           </div>
         </div>
       </div>
