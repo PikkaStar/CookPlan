@@ -12,15 +12,19 @@
   </head>
 
   <body>
-    <div class="row">
-      <div class="col-md-2 d-flex flex-column text-center" style="background-color: #ebe1a9;">
-        <%= render 'layouts/sidebar' %>
-      </div>
-      <div class="col-md-10 mx-auto" style="background-color: #f8f4e6;">
-        <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 d-flex flex-column text-center" style="background-color: #ebe1a9;">
+          <%= render 'layouts/sidebar' %>
+        </div>
+        <div class="col-md-10" style="background-color: #f8f4e6;">
+            <%= yield %>
+        </div>
       </div>
     </div>
-    <footer></footer>
+    <footer>
+
+    </footer>
   </body>
 </html>
 

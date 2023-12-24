@@ -1,0 +1,9 @@
+<div class="ingredient-fields">
+  <%= f.label :name, "食材名" %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :quantity, "用量" %>
+  <%= f.text_field :quantity, class: "form-control" %>
+
+  <%= link_to '削除', '#', class: 'remove-ingredient btn btn-danger' %>
+</div>

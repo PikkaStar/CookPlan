@@ -1,2 +1,27 @@
-<h1>User::Recipes#new</h1>
-<p>Find me in app/views/user/recipes/new.html.erb</p>
+<div class="flash-alert text-center">
+  <%= flash[:alert] %>
+</div>
+
+  <div class"row">
+    <div class="col-12 mx-auto text-center">
+      <h3 class="title">レシピ投稿</h3>
+      <%= form_with model: @recipe do |f| %>
+
+        <div class="form-group" id="ingredients_fields">
+          <%= f.fields_for :ingredients do |ingredient_fields| %>
+            <%= render 'ingredient_fields', f: ingredient_fields %>
+          <% end %>
+        </div>
+
+        <%= link_to '食材を追加', '#', id: 'add_ingredient', class: 'btn btn-primary' %>
+
+        <div class="form-group" id="steps_fields">
+          <%= f.fields_for :steps do |step_fields| %>
+            <%= render 'step_fields', f: step_fields %>
+          <% end %>
+        </div>
+
+        <%= link_to '手順を追加', '#', id: 'add_step', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>

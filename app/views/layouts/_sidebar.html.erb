@@ -2,6 +2,7 @@
   <%= image_tag current_user.get_profile_image(250, 250), class: "rounded-circle m-auto",style: "width: 150px; height: 150px;" %>
   <h4><%= current_user.name %></h4>
   <%= link_to "マイページ",user_path(current_user),class: "mt-5 bg-dark",style: "font-size: 25px;" %>
+  <%= link_to "料理投稿",new_recipe_path,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
   <%= link_to "ログアウト",destroy_user_session_path,method: :delete,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
 <% else %>
   <%= link_to "新規登録",new_user_registration_path,class: "mt-5 bg-dark",style: "font-size: 25px;" %>
