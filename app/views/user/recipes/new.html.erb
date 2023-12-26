@@ -4,7 +4,14 @@
 
   <div class"row">
     <div class="col-12 mx-auto text-center">
-      <h3 class="title">レシピ投稿</h3>
+      <h3 class="title">新規登録</h3>
+
+      <div class="under">
+        <p>レシピを登録します。</p>
+        <p>食材、用量、調理手順を入力し[新規登録]をクリックしてください。</p>
+        <p>食材や調理手順を追加したい場合は[食材を追加]、[手順を追加]をクリックしてください。</p>
+      </div>
+
       <%= form_with model: @recipe do |f| %>
 
         <div class="form-group" id="ingredients_fields">
@@ -12,16 +19,16 @@
             <%= render 'ingredient_fields', f: ingredient_fields %>
           <% end %>
         </div>
+        <%= link_to '食材を追加', '#', id: 'add_ingredient', class: 'btn btn-primary mb-5' %>
 
-        <%= link_to '食材を追加', '#', id: 'add_ingredient', class: 'btn btn-primary' %>
 
         <div class="form-group" id="steps_fields">
           <%= f.fields_for :steps do |step_fields| %>
             <%= render 'step_fields', f: step_fields %>
           <% end %>
         </div>
-
-        <%= link_to '手順を追加', '#', id: 'add_step', class: 'btn btn-primary' %>
+        <%= link_to '手順を追加', '#', id: 'add_step', class: 'btn btn-primary mb-5' %><br>
+        <%= f.submit "新規登録",class: "btn btn-info mb-5" %>
       <% end %>
     </div>
   </div>

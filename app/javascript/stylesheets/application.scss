@@ -44,3 +44,25 @@ footer {
     margin-left: 250px;
     width: 100%;
   }
+
+  .custom-textarea {
+  width: 100%; /* テキストエリアの幅を調整 */
+  max-width: 500px; /* 必要に応じて最大幅を設定 */
+  height: 50px; /* テキストエリアの高さを調整 */
+  resize: vertical; /* テキストエリアの垂直リサイズを有効にする */
+  margin: 0 auto;
+}
+
+.under{
+    width: 70%;
+    padding: 0.5em 1em;
+    margin: 2em auto;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.under p {
+    margin: 0;
+    padding: 0;
+}
