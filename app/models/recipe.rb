@@ -3,12 +3,14 @@ class Recipe < ApplicationRecord
 # gem:acts_as_taggableの使用
    acts_as_taggable_on :tags
 
-   validates :dish_name,presence: true
+   validates :title,presence: true
    validates :recipe,presence: true
 
    belongs_to :user
    has_many :steps,dependent: :destroy
    has_many :ingredients,dependent: :destroy
+#   子モデルのカラムを許可
+   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
 
    has_one_attached :image
 

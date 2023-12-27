@@ -1,0 +1,24 @@
+<%= form_with model: recipe do |f| %>
+
+<div>
+  <%= f.label :title, "レシピ名" %>
+  <%= f.text_field :title %>
+</div>
+
+<div id="ingredients">
+  <%= link_to_add_association '材料の追加', f, :ingredients,
+    data: { association_insertion_method: 'append'} %>
+  <%= f.fields_for :ingredients do |ingredient| %>
+    <div class="nested-fields">
+      <%= f.label :name, "材料名" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :quantity, "用量",class: "ml-5 mb-3" %>
+      <%= f.text_field :quantity %>
+
+      <%= link_to_remove_association "削除", f,class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
+<%= f.submit "作成する",class: "my-5" %>
+<% end %>

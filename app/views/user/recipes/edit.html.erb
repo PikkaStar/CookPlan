@@ -1,3 +1,6 @@
 <div class="flash-alert text-center">
   <%= flash[:alert] %>
 </div>
+
+<h2 class="title"><%= @recipe.title %>の編集</h2>
+<%= render "user/recipes/form", recipe: @recipe %>
