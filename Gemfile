@@ -57,4 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'kaminari'
 gem 'jquery-rails'
+# タグ生成
 gem 'acts-as-taggable-on'
+# 子テーブルのデータを親テーブルのフォームから作成する
+gem 'cocoon'

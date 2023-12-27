@@ -1,10 +1,9 @@
-<div class="ingredient-fields mt-3">
-  <%= f.label :name, "食材1" %>
+<div class="nested-fields">
+  <%= f.label :name, "材料名" %>
   <%= f.text_field :name %>
 
-  <%= f.label :quantity, "用量1",class: "ml-3" %>
-  <%= f.text_field :quantity,class: "mr-3" %>
+  <%= f.label :quantity, "用量",class: "ml-5 mb-3" %>
+  <%= f.text_field :quantity %>
 
-
-  <%= link_to '削除', '#',"data-confirm"=>"本当に削除しますか？", class: 'remove-ingredient btn btn-danger' %>
+  <%= link_to_remove_association "削除", f,class: "btn btn-danger" %>
 </div>

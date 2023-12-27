@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :user do
-    get root to: "homes#top"
+    get root to: "recipes#index"
     resources :users, only: [:index,:show,:edit,:update]
     resources :recipes
   end
