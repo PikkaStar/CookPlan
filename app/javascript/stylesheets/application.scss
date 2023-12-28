@@ -100,6 +100,14 @@ footer {
   text-align: center; /* 親要素に text-align を追加 */
 }
 
+.title3 {
+  width: 60%;
+  color: #364e96;/*文字色*/
+  padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #364e96;/*上線*/
+  border-bottom: solid 3px #364e96;/*下線*/
+}
+
 .introduction2 {
   position: relative;
   background-color: white;

@@ -1,18 +1,14 @@
-<div class="flash-alert text-center">
-  <%= flash[:alert] %>
-</div>
+<div class="row">
+  <div class="col-12 mx-auto text-center">
+    <h3 class="title">新規登録</h3>
 
-  <div class="row">
-    <div class="col-12 mx-auto text-center">
-      <h3 class="title">新規登録</h3>
+    <div class="under">
+      <p>レシピを登録します。</p>
+      <p>食材、用量、調理手順を入力し[新規登録]をクリックしてください。</p>
+      <p>食材や調理手順を追加したい場合は[食材を追加]、[手順を追加]をクリックしてください。</p>
+    </div>
 
-      <div class="under">
-        <p>レシピを登録します。</p>
-        <p>食材、用量、調理手順を入力し[新規登録]をクリックしてください。</p>
-        <p>食材や調理手順を追加したい場合は[食材を追加]、[手順を追加]をクリックしてください。</p>
-      </div>
-
-      <%= form_with model: @recipe do |f| %>
+    <%= form_with model: @recipe do |f| %>
 
       <div>
         <%= f.file_field :image,accept: "image/*" %>
@@ -47,7 +43,7 @@
       <div id="steps">
        <%= link_to_add_association '手順の追加', f, :steps,
          data: { association_insertion_method: 'append' }, class: "btn btn-primary my-3" %>
-       <%= f.fields_for :steps do |s| %>]
+       <%= f.fields_for :steps do |s| %>
           <div class="nested-fields">
 
             <%= s.label :text, "手順",class: "ml-5 mb-3" %>
@@ -59,7 +55,7 @@
       </div>
 
       <%= f.submit "作成する",class: "my-5" %>
-      <% end %>
+    <% end %>
 
-    </div>
   </div>
+</div>

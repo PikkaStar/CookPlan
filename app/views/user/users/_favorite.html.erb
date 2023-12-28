@@ -1,9 +1,9 @@
 <div style="background-color: #ffff99; margin-bottom: 0; padding-bottom: 0; overflow: hidden;">
-  <h3 class="text-center"><%= @user.name %>さんのレシピ一覧</h3>
+  <h3 class="text-center"><%= @user.name %>さんのお気に入りレシピ</h3>
 </div>
 
 <table class="table">
-  <% @recipes.each do |recipe| %>
+  <% @favorite_recipes.each do |recipe| %>
     <tr style="background-color: #fffff9;">
       <td><%= image_tag recipe.get_image(100,100) %></td>
       <td style="vertical-align: middle;"><%= link_to recipe.title,recipe_path(recipe.id) %></td>

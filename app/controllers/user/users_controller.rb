@@ -4,6 +4,8 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes
+    @favorite_recipes = Recipe.where(user: @user, favorite: true)
   end
 
   def edit
