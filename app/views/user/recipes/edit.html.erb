@@ -1,2 +1,68 @@
-<h2 class="title"><%= @recipe.title %>の編集</h2>
-<%= render "user/recipes/form", recipe: @recipe %>
+<div class="row">
+  <div class="col-12 mx-auto text-center">
+    <h3 class="title"><%= @recipe.title %>の編集</h3>
+
+    <div class="under">
+      <p>レシピを編集します。</p>
+      <p>食材、用量、調理手順を入力し[更新]をクリックしてください。</p>
+      <p>お気に入り登録をしたい場合は[お気に入り登録]をクリックしてください</p>
+    </div>
+
+    <%= form_with model: @recipe do |f| %>
+
+      <div>
+        <%= f.file_field :image,accept: "image/*" %>
+      </div>
+
+      <div>
+        <%= f.label :introduction,"料理紹介",class: "title2 mt-5", style: "font-size: 20px;" %>
+        <%= f.text_area :introduction,rows: 3,class: "introduction form-control mx-auto mb-5" %>
+      </div>
+
+      <div>
+        <%= f.label :title, "レシピ名" %>
+        <%= f.text_field :title %>
+      </div>
+
+      <div id="ingredients">
+        <%= link_to_add_association '材料の追加', f, :ingredients,
+          data: { association_insertion_method: 'append'}, class: "btn btn-primary my-3" %>
+        <%= f.fields_for :ingredients do |i| %>
+          <div class="nested-fields">
+            <%= i.label :name, "材料名" %>
+            <%= i.text_field :name %>
+
+            <%= i.label :quantity, "用量",class: "ml-5 mb-3" %>
+            <%= i.text_field :quantity %>
+
+            <%= link_to_remove_association "削除", i,class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="steps">
+       <%= link_to_add_association '手順の追加', f, :steps,
+         data: { association_insertion_method: 'append' }, class: "btn btn-primary my-3" %>
+       <%= f.fields_for :steps do |s| %>
+        <div class="nested-fields">
+
+          <%= s.label :text, "手順",class: "ml-5 mb-3" %>
+          <%= s.text_field :text %>
+
+          <%= link_to_remove_association "削除", s,class: "btn btn-danger" %>
+        </div>
+       <% end %>
+      </div>
+      <div class="field">
+        <%= f.label :favorite, "お気に入り登録" %><br>
+        <%= f.radio_button :favorite, true,style: 'transform: scale(1.5);' %>
+        <%= f.label :favorite, 'する' %>
+
+        <%= f.radio_button :favorite, false,style: 'transform: scale(1.5);',class: "ml-5" %>
+        <%= f.label :favorite, 'しない' %>
+      </div>
+      <%= f.submit "更新",class: "my-5" %>
+    <% end %>
+
+  </div>
+</div>

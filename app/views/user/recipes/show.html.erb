@@ -1,36 +1,51 @@
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
+      <div class="text-center">
+        <%= image_tag @recipe.get_image(200,200) %>
+      </div>
+
       <h3 class="title text-center">
         <%= @recipe.title %>
+        <% if @recipe.user_id == current_user.id %>
+          <%= link_to "レシピを編集",edit_recipe_path(@recipe),class: "btn btn-secondary" %>
+        <% end %>
       </h3>
 
       <div class="introduction2-container">
-        <div class="introduction2 mb-5">
+        <div class="title3 mx-auto mb-5 text-center">
           <%= @recipe.introduction %>
         </div>
       </div>
 
       <table class="table">
         <tr>
-          <th></th>
           <th>材料</th>
           <th style="text-align: right;">用量</th>
         </tr>
       <% @recipe.ingredients.each do |ingredient| %>
         <tr>
-          <td><%= image_tag @recipe.get_image(100,100) %></td>
           <td><%= ingredient.name %></td>
           <td style="text-align: right;"><%= ingredient.quantity %></td>
         </tr>
       <% end %>
       </table>
 
-      <% @recipe.steps.each do |step| %>
-        <div>
-          <%= step.text %>
-        </div>
-      <% end %>
+      <h3 class="title3 mx-auto my-5 text-center">
+        料理手順
+      </h3>
+      <table class="table">
+        <% @recipe.steps.each_with_index do |step,index| %>
+        <tr>
+          <td>
+            <span style="color: red; font-weight: bold;"><%= index + 1 %></span>：<%= step.text %>
+          </td>
+          <td>
+            <%= image_tag step.get_cook_image(100,100) %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
 
     </div>
   </div>
