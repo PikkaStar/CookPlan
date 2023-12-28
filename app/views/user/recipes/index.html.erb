@@ -9,14 +9,10 @@
   <% if @recipes.present? %>
     <ul>
       <% @recipes.each do |recipe| %>
-        <li><%= link_to recipe.title, edit_recipe_path(recipe) %></li>
-        <ul>
-          <% recipe.ingredients.each do |ingredient| %>
-            <li><%= ingredient.name %></li>
-          <% end %>
-        </ul>
-      <% end %>
+        <li><%= link_to recipe.title, recipe_path(recipe) %></li>
     </ul>
+  <% end %>
+
     <%= link_to "レシピの新規作成", new_recipe_path %>
 
   <% else %>

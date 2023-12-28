@@ -18,6 +18,17 @@
           <%= render 'layouts/sidebar' %>
         </div>
         <div class="col-md-10" style="background-color: #f8f4e6;">
+          <% if flash[:notice] %>
+            <div class="flash-notice text-center">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
+          <% if flash[:alert] %>
+            <div class="flash-alert text-center">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
+
             <%= yield %>
         </div>
       </div>

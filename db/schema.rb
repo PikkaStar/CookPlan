@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2023_12_24_073421) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title", null: false
+    t.text "introduction", null: false
     t.boolean "favorite", default: false, null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -70,13 +71,13 @@ ActiveRecord::Schema.define(version: 2023_12_24_073421) do
 
   create_table "steps", force: :cascade do |t|
     t.integer "recipe_id", null: false
-    t.string "direction", null: false
+    t.string "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
+    t.bigint "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
     t.string "tagger_type"

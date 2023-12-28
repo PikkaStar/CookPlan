@@ -15,13 +15,22 @@
       <%= form_with model: @recipe do |f| %>
 
       <div>
+        <%= f.file_field :image,accept: "image/*" %>
+      </div>
+
+      <div>
+        <%= f.label :introduction,"料理紹介",class: "title2 mt-5", style: "font-size: 20px;" %>
+        <%= f.text_area :introduction,rows: 3,class: "introduction form-control mx-auto mb-5" %>
+      </div>
+
+      <div>
         <%= f.label :title, "レシピ名" %>
         <%= f.text_field :title %>
       </div>
 
       <div id="ingredients">
         <%= link_to_add_association '材料の追加', f, :ingredients,
-          data: { association_insertion_method: 'append'} %>
+          data: { association_insertion_method: 'append'}, class: "btn btn-primary my-3" %>
         <%= f.fields_for :ingredients do |i| %>
           <div class="nested-fields">
             <%= i.label :name, "材料名" %>
@@ -34,6 +43,21 @@
           </div>
         <% end %>
       </div>
+
+      <div id="steps">
+       <%= link_to_add_association '手順の追加', f, :steps,
+         data: { association_insertion_method: 'append' }, class: "btn btn-primary my-3" %>
+       <%= f.fields_for :steps do |s| %>]
+          <div class="nested-fields">
+
+            <%= s.label :text, "手順",class: "ml-5 mb-3" %>
+            <%= s.text_field :text %>
+
+            <%= link_to_remove_association "削除", s,class: "btn btn-danger" %>
+          </div>
+       <% end %>
+      </div>
+
       <%= f.submit "作成する",class: "my-5" %>
       <% end %>
 
