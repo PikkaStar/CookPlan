@@ -1,13 +1,37 @@
-<div class="flash-notice text-center">
-  <%= flash[:notice] %>
-</div>
-
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
-      <h3 class="title">
-        
+      <h3 class="title text-center">
+        <%= @recipe.title %>
       </h3>
+
+      <div class="introduction2-container">
+        <div class="introduction2 mb-5">
+          <%= @recipe.introduction %>
+        </div>
+      </div>
+
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>材料</th>
+          <th style="text-align: right;">用量</th>
+        </tr>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td><%= image_tag @recipe.get_image(100,100) %></td>
+          <td><%= ingredient.name %></td>
+          <td style="text-align: right;"><%= ingredient.quantity %></td>
+        </tr>
+      <% end %>
+      </table>
+
+      <% @recipe.steps.each do |step| %>
+        <div>
+          <%= step.text %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>

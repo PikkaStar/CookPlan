@@ -1,9 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 footer {
@@ -78,4 +80,53 @@ footer {
 .about p {
     margin: 0;
     padding: 0;
+}
+
+.introduction {
+  width: 60%;
+}
+
+.title2 {
+  width: 50%;
+  padding: 1.65rem 2rem;
+  background-color: rgba(165, 210, 255, .4);
+  background-image:
+    linear-gradient(90deg, rgba(165, 210, 255, .3) 50%, transparent 50%),
+    linear-gradient(rgba(165, 210, 255, .3) 50%, transparent 50%);
+  background-size: 40px 40px;
+}
+
+.introduction2-container {
+  text-align: center; /* 親要素に text-align を追加 */
+}
+
+.introduction2 {
+  position: relative;
+  background-color: white;
+  line-height: 1.4;
+  padding:0.25em 1em;
+  display: inline-block;
+  top:0;
+}
+
+.introduction2:before, .introduction2:after {
+  position: absolute;
+  top: 0;
+  content:'';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+.introduction2:before {
+  border-left: solid 1px black;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  left: 0;
+}
+.introduction2:after {
+  content: '';
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  border-bottom: solid 1px black;
+  right: 0;
 }
