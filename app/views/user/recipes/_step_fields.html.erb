@@ -1,7 +1,17 @@
 <div class="nested-fields">
-  <%= f.file_field :cook_image,accept: "image/*" %>
-  <%= f.label :text, "手順",class: "ml-5 mb-3" %>
-  <%= f.text_area :text,rows: 2,class: "introduction mx-auto" %>
-
-  <%= link_to_remove_association "削除", f,class: "btn btn-danger" %>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2 class="counter"></h2>
+      <div class="form-group">
+        <%= f.file_field :cook_image,accept: "image/*" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :text, "手順" %>
+        <%= f.text_area :text,rows: 2,class: "introduction mx-auto", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= link_to_remove_association "削除", f,class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -7,6 +7,7 @@ class Recipe < ApplicationRecord
    validates :introduction,presence: true
 
    belongs_to :user
+   has_many :favorites,dependent: :destroy
    has_many :steps,dependent: :destroy
    has_many :ingredients,dependent: :destroy
 #   子モデルのカラムを許可
@@ -21,6 +22,10 @@ class Recipe < ApplicationRecord
       else
         "no_image"
       end
+    end
+
+    def favorited_by?(user)
+        favorites.exists?(user_id: user.id)
     end
 
 end
