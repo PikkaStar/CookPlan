@@ -7,14 +7,18 @@
   </div>
 
   <% if @recipes.present? %>
-    <ul>
+    <table class="table">
       <% @recipes.each do |recipe| %>
-        <li><%= link_to recipe.title, recipe_path(recipe) %></li>
-    </ul>
-  <% end %>
-
-    <%= link_to "レシピの新規作成", new_recipe_path %>
-
+        <tr>
+          <td><%= link_to recipe_path(recipe) do %>
+          <% image_tag recipe.get_image(100,100) %>
+          <% end %>
+          </td>
+          <td><%= link_to recipe.user.name, user_path(recipe.user_id) %></td>
+          <td><%= link_to recipe.title, recipe_path(recipe) %></td>
+        </tr>
+      <% end %>
+    </table>
   <% else %>
     <h3>レシピはありません</h3>
   <% end %>

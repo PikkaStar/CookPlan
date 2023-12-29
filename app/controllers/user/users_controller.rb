@@ -6,6 +6,8 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     @recipes = @user.recipes
     @favorite_recipes = Recipe.where(user: @user, favorite: true)
+    favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
+    @like_recipes = Recipe.where(id: favorites)
   end
 
   def edit

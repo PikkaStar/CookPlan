@@ -17,11 +17,14 @@
             <%= link_to "レシピ","#section2", class: "nav-link", data: { toggle: "tab" } %>
           </li>
           <li class="nav-item">
-            <%= link_to "お気に入り","#section3", class: "nav-link", data: { toggle: "tab" } %>
+            <%= link_to "自信作","#section3", class: "nav-link", data: { toggle: "tab" } %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "お気に入りレシピ","#section4",class: "nav-link", data: { toggle: "tab" } %>
           </li>
           <% if @user == current_user %>
           <li class="nav-item">
-            <%= link_to "ユーザー設定","#section4",class: "nav-link", data: { toggle: "tab" } %>
+            <%= link_to "ユーザー設定","#section5",class: "nav-link", data: { toggle: "tab" } %>
           </li>
           <% end %>
         </ul>
@@ -36,7 +39,10 @@
             <%= render "user/users/favorite" %>
           </div>
           <div id="section4" class="tab-pane fade">
-            <%= link_to "プロフィール変更",edit_user_path(current_user) %>
+            <%= render "user/users/like" %>
+          </div>
+          <div id="section5" class="tab-pane fade">
+            <%= render "user/users/edit",user: @user %>
           </div>
         </div>
       </div>
