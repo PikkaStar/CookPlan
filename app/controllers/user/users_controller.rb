@@ -7,6 +7,7 @@ class User::UsersController < ApplicationController
     @recipes = @user.recipes
     @favorite_recipes = Recipe.where(user: @user, favorite: true)
     favorites = Favorite.where(user_id: @user.id).pluck(:recipe_id)
+    # いいねした投稿一覧
     @like_recipes = Recipe.where(id: favorites)
   end
 
