@@ -1,4 +1,5 @@
 class User::RecipesController < ApplicationController
+ before_action :authenticate_user!,only: [:create,:edit,:new,:update,:destroy]
 
  def new
    @recipe = Recipe.new
