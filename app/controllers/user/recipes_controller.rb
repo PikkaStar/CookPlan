@@ -50,6 +50,7 @@ class User::RecipesController < ApplicationController
  private
 
  def recipe_params
+  # 子要素のカラムの許可
   params.require(:recipe).permit(:title,:introduction,:image,:favorite, ingredients_attributes: [:id, :name, :quantity, :_destroy],steps_attributes: [:id,:text,:cook_image,:_destroy])
  end
 
