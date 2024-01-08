@@ -18,6 +18,7 @@ class Recipe < ApplicationRecord
 
     def get_image(width, height)
       if image.attached?
+        # サイズ変更と画像の中央に表示場所を設定
         image.variant(resize: "#{width}x#{height}^", gravity: 'center', crop: "#{width}x#{height}+0+0").processed
       else
         "no_image"
