@@ -6,20 +6,7 @@
     <p>材料の意外な使い方が見つかるかも？</p>
   </div>
 
-  <% if @recipes.present? %>
-    <table class="table">
-      <% @recipes.each do |recipe| %>
-        <tr>
-          <td><%= link_to recipe_path(recipe) do %>
-          <% image_tag recipe.get_image(100,100) %>
-          <% end %>
-          </td>
-          <td><%= link_to recipe.user.name, user_path(recipe.user_id) %></td>
-          <td><%= link_to recipe.title, recipe_path(recipe) %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% else %>
-    <h3>レシピはありません</h3>
+  <%= month_calendar do |date| %>
+  　<%= date.day %>
   <% end %>
 </div>

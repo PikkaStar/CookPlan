@@ -61,3 +61,4 @@ gem 'jquery-rails'
 gem 'acts-as-taggable-on'
 # 子テーブルのデータを親テーブルのフォームから作成する
 gem 'cocoon'
+gem 'simple_calendar'
