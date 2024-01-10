@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   scope module: :user do
     get root to: "recipes#index"
     resources :users, only: [:index,:show,:edit,:update]
+    resources :events
     resources :recipes do
       resource :favorites,only: [:create,:destroy]
     end
