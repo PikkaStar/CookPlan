@@ -7,6 +7,14 @@
   </div>
 
   <%= month_calendar do |date| %>
-  　<%= date.day %>
+  <%= date.day %>
+  <br>
+  <% unless Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count == 0 %>
+    <%= link_to daily_recipes_path(date: date) do %>
+    投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+    <% end %>
+  <% else %>
+    投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
   <% end %>
+<% end %>
 </div>

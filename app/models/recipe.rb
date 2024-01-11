@@ -29,4 +29,8 @@ class Recipe < ApplicationRecord
         favorites.exists?(user_id: user.id)
     end
 
+    def self.looks(word)
+      @recipe = Recipe.where("title LIKE?","%#{word}%")
+    end
+
 end

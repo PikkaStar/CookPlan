@@ -25,7 +25,7 @@
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
   <br>
-  投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+  投稿件数: <%= link_to Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count,daily_recipes_path %>
 
   <% events.each do |event| %>
     <div>

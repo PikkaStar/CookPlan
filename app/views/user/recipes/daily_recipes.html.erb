@@ -1,0 +1,20 @@
+<h2 class="text-center title"><%= @date.strftime("%Y年%m月%d日") %>に投稿されたレシピ</h2>
+
+<table class="table">
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td>
+        <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.get_image(100,100) %>
+        <% end %>
+      </td>
+      <td><%= link_to recipe.title,recipe_path(recipe.id) %></td>
+      <td>
+        <%= link_to user_path(recipe.user_id) do %>
+        <%= image_tag recipe.user.get_profile_image(100,100) %>
+        <% end %>
+      </td>
+      <td><%= link_to recipe.user.name,user_path(recipe.user_id) %></td>
+    </tr>
+  <% end %>
+</table>
