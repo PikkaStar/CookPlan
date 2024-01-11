@@ -2,6 +2,7 @@ class User::EventsController < ApplicationController
 
   def create
     event = Event.new(event_params)
+    event.user_id = current_user.id
     event.save
     if flash[:notice] = "カレンダーに記入しました"
     redirect_to events_path
@@ -14,6 +15,7 @@ class User::EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @event_new = Event.new
   end
 
   def show
@@ -40,7 +42,7 @@ class User::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = "削除しました"
-    redirect_to events_path
+    redirect_to user_events_path
   end
 
   private
