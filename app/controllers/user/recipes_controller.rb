@@ -47,11 +47,33 @@ class User::RecipesController < ApplicationController
   redirect_to recipes_path
  end
 
+ def daily_recipes
+   @date = Date.parse(params[:date])
+   @recipes = daily_recipes_for_date(@date)
+ end
+
+ def searches
+  @range = params[:range]
+  @word = params[:word]
+  
+  if @range == "料理名"
+   @recipes = Recipe.looks(params[:word])
+  elsif @range == "材料"
+   @ingredients = Ingredient.looks(params[:word])
+  else
+   @recipes = Recipe.all
+  end
+ end
+
  private
 
  def recipe_params
   # 子要素のカラムの許可
   params.require(:recipe).permit(:title,:introduction,:image,:favorite, ingredients_attributes: [:id, :name, :quantity, :_destroy],steps_attributes: [:id,:text,:cook_image,:_destroy])
+ end
+
+ def daily_recipes_for_date(date)
+   Recipe.where(created_at: date.beginning_of_day..date.end_of_day)
  end
 
 end

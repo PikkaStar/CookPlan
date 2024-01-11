@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   scope module: :user do
     get root to: "recipes#index"
     resources :users, only: [:index,:show,:edit,:update]
-    resources :events
     resources :recipes do
       resource :favorites,only: [:create,:destroy]
     end
+    get 'daily_recipes'=>"recipes#daily_recipes",as: "daily_recipes"
+    get 'search'=>'recipes#searches',as: 'search'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

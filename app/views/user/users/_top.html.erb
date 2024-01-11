@@ -3,7 +3,6 @@
 </div>
 <div class="bg-white text-center" style="margin-top: 0; padding-top: 0;">
   <%= @user.introduction %>
-  <%= link_to "カレンダー",events_path(@user.id) %>
 </div>
 
 <div style="background-color: #ffff99; margin-bottom: 0; padding-bottom: 0; overflow: hidden;">
@@ -13,5 +12,11 @@
 <%= month_calendar do |date| %>
   <%= date.day %>
   <br>
-  投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+  <% unless Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count == 0 %>
+    <%= link_to daily_recipes_path(date: date) do %>
+    投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+    <% end %>
+  <% else %>
+    投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+  <% end %>
 <% end %>
