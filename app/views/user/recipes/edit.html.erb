@@ -47,7 +47,7 @@
         <div class="nested-fields">
 
           <%= s.label :text, "手順",class: "ml-5 mb-3" %>
-          <%= s.text_field :text %>
+          <%= s.text_area :text,rows: 2, class: "form-control introduction mx-auto" %>
 
           <%= link_to_remove_association "削除", s,class: "btn btn-danger" %>
         </div>

@@ -1,0 +1,35 @@
+<div class="text-center">
+  <h1>カレンダー</h1>
+</div>
+
+<%= form_with model: @event_new,url: events_path,method: :post do |f| %>
+
+  <div>
+    <%= f.label :title,"タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :start_time,"開始時間" %>
+    <%= f.datetime_select :start_time %>
+  </div>
+
+  <div>
+    <%= f.label :content,"内容" %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.submit "投稿",class: "btn btn-success" %>
+<% end %>
+
+<%= month_calendar events: @events do |date, events| %>
+  <%= date.day %>
+  <br>
+  投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+
+  <% events.each do |event| %>
+    <div>
+      <%= link_to event.title,event_path(event.id) %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,24 @@
+
+<% if @event.present? %>
+  <h2 class="title text-center"><%= @event.title %></h2>
+  <div>
+    <%= @event.content %>
+  </div>
+
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table">
+        <tr>
+          <td>開始時間</td>
+          <td><%= @event.start_time %></td>
+        </tr>
+        <tr>
+          <td>終了予定</td>
+          <td><%= @event.end_time %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% else %>
+  <h2 class="title">予定はありません</h2>
+<% end %>
