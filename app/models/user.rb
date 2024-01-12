@@ -12,6 +12,7 @@ class User < ApplicationRecord
          validates :name,presence: true
          validates :introduction,length: { maximum: 200 }
 
+        # サイズ変更
         def get_profile_image(width, height)
           if profile_image.attached?
             profile_image.variant(resize: "#{width}x#{height}^", gravity: 'center', crop: "#{width}x#{height}+0+0").processed
