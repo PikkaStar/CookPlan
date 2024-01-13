@@ -47,6 +47,7 @@ class User::RecipesController < ApplicationController
   redirect_to recipes_path
  end
 
+ # その日ごとのレシピを取得
  def daily_recipes
    @date = Date.parse(params[:date])
    @recipes = daily_recipes_for_date(@date)
@@ -55,7 +56,7 @@ class User::RecipesController < ApplicationController
  def searches
   @range = params[:range]
   @word = params[:word]
-  
+
   if @range == "料理名"
    @recipes = Recipe.looks(params[:word])
   elsif @range == "材料"
