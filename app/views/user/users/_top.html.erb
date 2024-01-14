@@ -12,8 +12,10 @@
 <%= month_calendar do |date| %>
   <%= date.day %>
   <br>
+  <!--投稿数が0のものはリンクにしない-->
   <% unless Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count == 0 %>
     <%= link_to daily_recipes_path(date: date) do %>
+    <!--作成日がその日の始まりから終わりまでの範囲のデータを取得-->
     投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
     <% end %>
   <% else %>
