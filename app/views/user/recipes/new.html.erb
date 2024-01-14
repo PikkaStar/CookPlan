@@ -8,6 +8,13 @@
       <p>食材や調理手順を追加したい場合は[食材を追加]、[手順を追加]をクリックしてください。</p>
     </div>
 
+    <% if @recipe.errors.any? %>
+      <%= @recipe.errors.count %>件のエラーが発生しました
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+
     <%= form_with model: @recipe do |f| %>
 
       <div>

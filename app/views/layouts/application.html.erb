@@ -28,7 +28,9 @@
               <%= flash[:alert] %>
             </div>
           <% end %>
-        <%= render 'user/recipes/searches' %>
+          <div class="text-center mt-3">
+            <%= render 'user/recipes/searches' %>
+          </div>
           <%= yield %>
         </div>
       </div>
