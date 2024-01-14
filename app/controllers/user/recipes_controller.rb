@@ -12,13 +12,13 @@ class User::RecipesController < ApplicationController
     flash[:notice] = "レシピを登録しました"
     redirect_to recipe_path(@recipe)
   else
-    flash[:alert] = "レシピの登録に失敗しました"
+    flash.now[:alert] = "レシピの登録に失敗しました"
     render :new
   end
  end
 
  def index
-  @recipes = Recipe.all
+  @recipes = Recipe.page(params[:page]).per(5)
  end
 
  def edit
