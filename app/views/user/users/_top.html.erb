@@ -1,24 +1,20 @@
 <div style="background-color: #ffff99; margin-bottom: 0; padding-bottom: 0;">
-  <h4 class="text-center" style="margin: 0;">自己紹介</h4>
+  <h4 class="text-center py-2" style="margin: 0;">自己紹介</h4>
 </div>
-<div class="bg-white text-center" style="margin-top: 0; padding-top: 0;">
+<div class="bg-white text-center py-2" style="margin-top: 0;">
   <%= @user.introduction %>
 </div>
 
 <div style="background-color: #ffff99; margin-bottom: 0; padding-bottom: 0; overflow: hidden;">
-  <h3 class="text-center">最近のレシピ</h3>
+  <h3 class="text-center"><%= @user.name %>さんの自信作レシピ</h3>
 </div>
 
-<%= month_calendar do |date| %>
-  <%= date.day %>
-  <br>
-  <!--投稿数が0のものはリンクにしない-->
-  <% unless Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count == 0 %>
-    <%= link_to daily_recipes_path(date: date) do %>
-    <!--作成日がその日の始まりから終わりまでの範囲のデータを取得-->
-    投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
-    <% end %>
-  <% else %>
-    投稿件数: <%= Recipe.where(created_at: date.beginning_of_day..date.end_of_day).count %>
+<table class="table">
+  <% @favorite_recipes.each do |recipe| %>
+    <tr style="background-color: #fffff9;">
+      <td><%= image_tag recipe.get_image(100,100) %></td>
+      <td style="vertical-align: middle;"><%= link_to recipe.title,recipe_path(recipe.id) %></td>
+      <td style="vertical-align: middle;"><%= recipe.introduction %></td>
+    </tr>
   <% end %>
-<% end %>
+</table>
