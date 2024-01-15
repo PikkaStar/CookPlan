@@ -30,7 +30,7 @@ class Recipe < ApplicationRecord
     end
 
     def self.looks(word)
-      @recipe = Recipe.where("title LIKE?","%#{word}%")
+      @recipe = Recipe.where("title LIKE?","%#{word}%").distinct
     end
 
 end
