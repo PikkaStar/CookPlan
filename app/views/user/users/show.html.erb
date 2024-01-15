@@ -17,9 +17,6 @@
             <%= link_to "レシピ","#section2", class: "nav-link", data: { toggle: "tab" } %>
           </li>
           <li class="nav-item">
-            <%= link_to "自信作","#section3", class: "nav-link", data: { toggle: "tab" } %>
-          </li>
-          <li class="nav-item">
             <%= link_to "お気に入りレシピ","#section4",class: "nav-link", data: { toggle: "tab" } %>
           </li>
           <% if @user == current_user %>
@@ -34,9 +31,6 @@
           </div>
           <div id="section2" class="tab-pane fade">
             <%= render "user/users/recipe" %>
-          </div>
-          <div id="section3" class="tab-pane fade">
-            <%= render "user/users/favorite" %>
           </div>
           <div id="section4" class="tab-pane fade">
             <%= render "user/users/like" %>
