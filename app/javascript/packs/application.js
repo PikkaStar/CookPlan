@@ -34,3 +34,14 @@ document.addEventListener('turbolinks:load', function() {
 document.addEventListener('turbolinks:load', function() {
   $('.about').slideDown(1000);
 });
+
+document.addEventListener('turbolinks:load',function(){
+  $('tr').on('click',function(){
+    $(this).css({
+      'background-color': 'red'
+    });
+  });
+  $('tr').mouseout(function(){
+    $(this).css({'background-color':''});
+  });
+});
