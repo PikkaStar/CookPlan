@@ -18,3 +18,19 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+
+document.addEventListener('turbolinks:load', function() {
+  $('.test1').mouseover(function(){
+    $('.test1').css({'background-color': '#a0d8ef'});
+  });
+
+  $('.test1').mouseout(function(){
+    $('.test1').css({'background-color': ''});
+  });
+
+  $('.about').slideDown(1000);
+});
+
+document.addEventListener('turbolinks:load', function() {
+  $('.about').slideDown(1000);
+});
