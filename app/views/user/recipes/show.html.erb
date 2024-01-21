@@ -59,8 +59,8 @@
         <% end %>
       </table>
 
-      <% if @recipe.user == current_user %>
-        レシピを削除しますか？
+      <!--users_helperに定義-->
+      <% if recipe_user?(current_user) %>
         <%= link_to "削除する",recipe_path(@recipe),method: :delete,"data-confirm"=>"レシピを削除しますか？",class: "btn btn-danger" %>
       <% end %>
 

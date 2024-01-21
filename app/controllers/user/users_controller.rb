@@ -1,6 +1,8 @@
 class User::UsersController < ApplicationController
+  # users/concernに定義
   include Users
 
+  # users/concernに定義
   def index
     get_users
   end
