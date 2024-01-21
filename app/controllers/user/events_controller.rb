@@ -1,4 +1,5 @@
 class User::EventsController < ApplicationController
+  include Users
 
   def create
     event = Event.new(event_params)
@@ -14,8 +15,7 @@ class User::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
-    @event_new = Event.new
+    get_users
   end
 
   def show

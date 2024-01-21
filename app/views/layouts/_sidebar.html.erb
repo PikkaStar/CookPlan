@@ -4,6 +4,7 @@
   <% end %>
   <h4><%= current_user.name %></h4>
   <%= link_to "マイページ",user_path(current_user),class: "mt-5 bg-dark",style: "font-size: 25px;" %>
+  <%= link_to "会員一覧",users_path,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
   <%= link_to "レシピ一覧",recipes_path,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
   <%= link_to "料理投稿",new_recipe_path,class: "mt-1 bg-dark",style: "font-size: 25px;" %>
   <%= link_to "ログアウト",destroy_user_session_path,method: :delete,class: "mt-1 bg-dark",style: "font-size: 25px;" %>

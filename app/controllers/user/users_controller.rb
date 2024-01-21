@@ -1,5 +1,8 @@
 class User::UsersController < ApplicationController
+  include Users
+
   def index
+    get_users
   end
 
   def show
