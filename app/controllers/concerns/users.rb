@@ -1,8 +1,25 @@
+# 正しい例
 module Users
-extend ActiveSupport::Concern
+    extend ActiveSupport::Concern
 
-def get_users
-  @users = User.all
+    included do
+      before_action :get_users,only: [:index]
+    end
+
+    def get_users
+        @users = User.all
+    end
+
 end
 
-end
+# 悪い例
+# module Users
+#     extend ActiveSupport::Concern
+
+#     included do
+#       before_action :get_users,only: [:index]
+#       def get_users
+#         @users = User.all
+#       end
+#     end
+# end
