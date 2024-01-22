@@ -15,7 +15,6 @@ class User::EventsController < ApplicationController
   end
 
   def index
-    get_users
   end
 
   def show
