@@ -53,11 +53,8 @@ ActiveRecord::Schema.define(version: 2024_01_10_004627) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer "user_id"
+    t.string "title", null: false
+    t.integer "cooking_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,9 +1,12 @@
+<%= render 'user/events/new',event: @event %>
+
+
 <table class="table">
-  <% @users.each do |user| %>
-
+  <% @events.each do |event| %>
     <tr>
-      <td><%= user.name %></td>
+      <td><%= event.title %></td>
+      <td><%= display_cooking_number(event) %></td>
+      <td><%= link_to "編集",edit_event_path(event.id) %></td>
     </tr>
-
   <% end %>
 </table>

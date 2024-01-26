@@ -1,0 +1,29 @@
+<h1>新規投稿</h1>
+
+<% if @event.errors.any? %>
+  <%= @event.errors.count %>件のエラー
+  <% @event.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
+<%= form_with model: event do |f| %>
+  <%= f.label :title,"タイトル" %><br>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :cooking_number,"日本" %>
+  <%= f.radio_button :cooking_number,"japan" %>
+
+  <%= f.label :cooking_number,"アメリカ" %>
+  <%= f.radio_button :cooking_number,"usa" %>
+
+  <%= f.label :cooking_number,"中国" %>
+  <%= f.radio_button :cooking_number,"china" %>
+
+  <%= f.label :cooking_number,"韓国" %>
+  <%= f.radio_button :cooking_number,"korea" %>
+
+  <%= f.submit "投稿" %>
+
+<% end %>
