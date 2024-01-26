@@ -1,25 +1,19 @@
 class User::EventsController < ApplicationController
-  include Users
 
   def create
-    event = Event.new(event_params)
-    event.user_id = current_user.id
-    event.save
-    if flash[:notice] = "カレンダーに記入しました"
+    @event = Event.new(event_params)
+    if @event.save
     redirect_to events_path
     else
-      flash[:alert] = "記入できませんでした"
-      @event = Event.find(params[:id])
-      render :show
+      @events = Event.all
+      render :index
+      @event = Event.new
     end
   end
 
   def index
-  end
-
-  def show
-    @event = Event.find(params[:id])
-    @event_new = Event.new
+    @event = Event.new
+    @events = Event.all
   end
 
   def edit
@@ -29,25 +23,13 @@ class User::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
-    if flash[:notice] = "更新しました"
-      redirect_to events_path
-    else
-      flash[:alert] = "編集に失敗しました"
-      render :edit
-    end
-  end
-
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    flash[:notice] = "削除しました"
-    redirect_to user_events_path
+    redirect_to events_path
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:title,:content,:start_time,:end_time)
+    params.require(:event).permit(:title,:cooking_number)
   end
 
 end

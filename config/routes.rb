@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
     get 'daily_recipes'=>"recipes#daily_recipes",as: "daily_recipes"
     get 'search'=>'recipes#searches',as: 'search'
-    resources :events,only: [:index]
+    resources :events
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
