@@ -26,10 +26,15 @@ class User::EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def destroy_all
+    Event.destroy_all
+    redirect_to request.referer
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:title,:cooking_number)
+    params.require(:event).permit(:title,:cooking_number,:amount)
   end
 
 end

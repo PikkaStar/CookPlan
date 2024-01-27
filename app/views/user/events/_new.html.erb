@@ -24,6 +24,9 @@
   <%= f.label :cooking_number,"韓国" %>
   <%= f.radio_button :cooking_number,"korea" %>
 
+  <%= f.select :amount,*[1..20] %>
+  <%= f.select :amount, options_from_collection_for_select(Event.all, :id, :title) %>
+
   <%= f.submit "投稿" %>
 
 <% end %>
